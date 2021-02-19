@@ -7,10 +7,13 @@
     <groupId>bitsplease</groupId>
     <artifactId>bitsplease.Project3</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <url>https://github.com/Null-Entry/bitsplease.git</url>
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
     </properties>
+    <dependencies>
+
+    </dependencies>
 
 </project>
