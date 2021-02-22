@@ -2,16 +2,21 @@ import javax.swing.*;
 import java.awt.*;
 
 public class adminGUI {
-    public static void main(String[] args) {
+    public adminGUI() {
         // create window
         Container con = new Container();
         JFrame adminWindow = new JFrame();
         //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
         Font anchorFont = new Font("Times New Roman", Font.PLAIN, 16);
-        // set layout and resolutoin
+        // set layout and resolution
         adminWindow.setSize(800, 600);
-        adminWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        /*
+         *  Turns out when you close the admin window, the search window
+         *  also closes. To stop this, we change EXIT_ON_CLOSE to
+         *  DISPOSE_ON_CLOSE.
+         */
+        adminWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         adminWindow.setLayout(null);
         adminWindow.setVisible(true);
         // make content pane
