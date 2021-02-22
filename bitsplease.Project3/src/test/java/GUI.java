@@ -3,9 +3,18 @@ import java.awt.*;
 import java.awt.event.*;
 
 /*
- * add booleans, add event listeners
+ * add radio buttons
  */
 public class GUI {
+    /*
+        placeholder values for testing, these will be
+        likely be replaced or removed in later versions
+     */
+    private String placeholder = "unset";
+    private String stubMethod() {
+        return "Area under Construction";
+    }
+
     /*
      *   The fact that this function has no return declared, and
      *  it has the same name as the class, makes this a constructor.
@@ -42,8 +51,23 @@ public class GUI {
         con.add(buttonPanel);
         // buttons
         JButton addSearchInfo = new JButton("Search");
+        addSearchInfo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                placeholder = stubMethod();
+            }
+        });
         JButton updateSearchInfo = new JButton("Update");
+        updateSearchInfo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                placeholder = stubMethod();
+            }
+        });
         JButton removeSearchInfo = new JButton("Delete");
+        removeSearchInfo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                placeholder = stubMethod();
+            }
+        });
         JButton adminButton = new JButton("Settings");
         adminButton.addActionListener(new ActionListener() {
             /* actionPerformed must be present, although it can
@@ -52,6 +76,11 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 adminGUI admin = new adminGUI();
             }
+            /*  Normally you wouldn't need a semicolon after a }
+                but this is still contained in a parenthesis, so
+                we have to close. After you the ) you *do* need
+                the semicolon.
+             */
         });
         buttonPanel.add(addSearchInfo);
         buttonPanel.add(updateSearchInfo);
