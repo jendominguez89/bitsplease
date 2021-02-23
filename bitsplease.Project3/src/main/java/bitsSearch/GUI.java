@@ -127,13 +127,11 @@ public class GUI {
         // panel to put them on
         JPanel radioPanel = new JPanel();
         radioPanel.setBounds(300, 200, 200, 50);
-        radioPanel.setBackground(Color.pink);
         addRadioButtons(radioPanel);
         con.add(radioPanel);
 
         // fabulous panel
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.pink);
         buttonPanel.setFont(buttonFont);
         buttonPanel.setBounds(200,450,400,50);
         con.add(buttonPanel);
@@ -145,6 +143,8 @@ public class GUI {
                 placeholder = stubMethod();
             }
         });
+
+        /*
         JButton updateSearchInfo = new JButton("Update");
         updateSearchInfo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -157,6 +157,9 @@ public class GUI {
                 placeholder = stubMethod();
             }
         });
+
+        */
+
         JButton adminButton = new JButton("Settings");
         adminButton.addActionListener(new ActionListener() {
             /* actionPerformed must be present, although it can
@@ -172,8 +175,12 @@ public class GUI {
              */
         });
         buttonPanel.add(addSearchInfo);
-        buttonPanel.add(updateSearchInfo);
-        buttonPanel.add(removeSearchInfo);
+
+       /*
+       buttonPanel.add(updateSearchInfo);
+       buttonPanel.add(removeSearchInfo);
+       */
+
         buttonPanel.add(adminButton);
 
         /*  Adding elements is turning the window blank. This should
