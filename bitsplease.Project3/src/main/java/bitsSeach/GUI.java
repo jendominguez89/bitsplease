@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// refactor folder heirarchy
+// refactor folder hierachy
 // add test file
 
 public class GUI {
@@ -127,13 +127,11 @@ public class GUI {
         // panel to put them on
         JPanel radioPanel = new JPanel();
         radioPanel.setBounds(300, 200, 200, 50);
-        radioPanel.setBackground(Color.pink);
         addRadioButtons(radioPanel);
         con.add(radioPanel);
 
-        // fabulous panel
+        // regular panel
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.pink);
         buttonPanel.setFont(buttonFont);
         buttonPanel.setBounds(200,450,400,50);
         con.add(buttonPanel);
