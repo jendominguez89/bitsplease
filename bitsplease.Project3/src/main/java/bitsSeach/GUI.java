@@ -40,7 +40,7 @@ public class GUI {
         /* or button */
         JRadioButton orButton = new JRadioButton("Or");
         orButton.setActionCommand("OR");
-        /* exact match button, refered to as 'match' */
+        /* exact match button, referred to as 'match' */
         JRadioButton matchButton = new JRadioButton("Exact Match");
         matchButton.setActionCommand("MATCH");
 
@@ -119,7 +119,7 @@ public class GUI {
            }
         });
 
-        JLabel textLabel = new JLabel("Enter Search Term Here:");
+        JLabel textLabel = new JLabel("Enter Search Term Here:  ");
         textPanel.add(textLabel,BorderLayout.WEST);
         con.add(textPanel);
 
