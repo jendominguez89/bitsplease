@@ -11,8 +11,9 @@ public class adminGUI {
         adminWindow.setSize(800,600 );
         adminWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         adminWindow.setLayout(null);
-        adminWindow.setVisible(true);
+        adminWindow.setResizable(false);
         con = adminWindow.getContentPane();
+        adminWindow.setVisible(true);
         JLabel titleLabel = new JLabel("BitsPlease Search Engine");
         titleLabel.setFont(titleFont);
         JPanel titlePanel = new JPanel();
@@ -20,7 +21,6 @@ public class adminGUI {
         titlePanel.setBounds(40, 10, 700, 100);
         titlePanel.add(titleLabel);
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.black);
         buttonPanel.setBounds(200,400, 400,50);
         con.add(buttonPanel);
         JButton addFile = new JButton("Add File");
