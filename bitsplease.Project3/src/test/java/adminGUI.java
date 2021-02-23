@@ -47,5 +47,4 @@ public class adminGUI {
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
     }
-
 }

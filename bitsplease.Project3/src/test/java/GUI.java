@@ -11,8 +11,57 @@ public class GUI {
         likely be replaced or removed in later versions
      */
     private String placeholder = "unset";
+
     private String stubMethod() {
         return "Area under Construction";
+    }
+    /* parses radio button choice */
+    private String radioHook(String radio) {
+        return "Your boolean is in a different castle.";
+    }
+
+    /*  This function adds radio buttons to the content pane for
+        our boolean selector. It does not return a value, but objects
+        are passed by reference in Java. This means the function operates on
+        the same content pane as the constructor does, and any changes
+        made here affect the rest of the program.
+     */
+    private void addRadioButtons(Container content) {
+        /* and button, selected by default */
+        JRadioButton andButton = new JRadioButton("And");
+        andButton.setActionCommand("AND");
+        andButton.setSelected(true);
+        /* or button */
+        JRadioButton orButton = new JRadioButton("Or");
+        orButton.setActionCommand("OR");
+        /* exact match button, refered to as 'match' */
+        JRadioButton matchButton = new JRadioButton("Exact Match");
+        matchButton.setActionCommand("MATCH");
+
+        // group da buttons
+        ButtonGroup group = new ButtonGroup();
+        group.add(andButton);
+        group.add(orButton);
+        group.add(matchButton);
+
+        /*  action listeners, the string can be used as the control value
+            for a switch case in the parsing function
+         */
+        andButton.addActionListener(new ActionListener() {
+           public void actionPerformed( ActionEvent e ) {
+               radioHook(andButton.getActionCommand());
+           }
+        });
+        orButton.addActionListener(new ActionListener() {
+            public void actionPerformed( ActionEvent e ) {
+                radioHook(orButton.getActionCommand());
+            }
+        });
+        matchButton.addActionListener(new ActionListener() {
+            public void actionPerformed( ActionEvent e ) {
+                radioHook(matchButton.getActionCommand());
+            }
+        });
     }
 
     /*
@@ -34,8 +83,10 @@ public class GUI {
         adminWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         adminWindow.setLayout(null);
         adminWindow.setVisible(true);
+
         // content pane
         con = adminWindow.getContentPane();
+
         // title text
         JLabel titleLabel = new JLabel("BitsPlease Get Searching");
         titleLabel.setFont(titleFont);
@@ -43,13 +94,18 @@ public class GUI {
         con.add(titlePanel);
         titlePanel.setBounds(40, 10, 700, 100);
         titlePanel.add(titleLabel);
+
+        // radio buttons
+        JPanel radio = new JPanel();
+
         // fabulous panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.pink);
         buttonPanel.setFont(buttonFont);
         buttonPanel.setBounds(200,450,400,50);
         con.add(buttonPanel);
-        // buttons
+
+        // regular buttons
         JButton addSearchInfo = new JButton("Search");
         addSearchInfo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -74,7 +130,7 @@ public class GUI {
              * be defined in its own block
              */
             public void actionPerformed(ActionEvent e) {
-                adminGUI admin = new adminGUI();
+                adminGUI admin = new adminGUI(); // creates admin window
             }
             /*  Normally you wouldn't need a semicolon after a }
                 but this is still contained in a parenthesis, so
