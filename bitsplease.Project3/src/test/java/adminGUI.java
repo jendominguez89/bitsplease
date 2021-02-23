@@ -1,27 +1,40 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 
 public class adminGUI {
+    JFrame frame = new JFrame("BoxLayout");
     public static void main (String[] args) {
         Container con = new Container();
 
         /*setting the properties of the webpage*/
-        JFrame adminWindow = new JFrame();
+        JFrame adminWindow = new JFrame("GUI Admin");
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
         Font anchorFont = new Font("Times New Roman", Font.PLAIN, 16);
         adminWindow.setSize(800,600 );
         adminWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         adminWindow.setLayout(null);
-        adminWindow.setVisible(true);
+        adminWindow.setResizable(false);
         con = adminWindow.getContentPane();
+        adminWindow.setVisible(true);
         JLabel titleLabel = new JLabel("BitsPlease Search Engine");
         titleLabel.setFont(titleFont);
+
+
+        /* adding tabs*/
         JPanel titlePanel = new JPanel();
+        JPanel p2=new JPanel();
+        JPanel p3=new JPanel();
         con.add(titlePanel);
-        titlePanel.setBounds(40, 10, 700, 100);
+        JTabbedPane tabs=new JTabbedPane();
+        tabs.setBounds(20,20,600,500);
+        tabs.add("main",titlePanel);
+        tabs.add("visit",p2);
+        tabs.add("help",p3);
+        adminWindow.add(tabs);
+        titlePanel.setBounds(100, 150, 800, 600);
         titlePanel.add(titleLabel);
+
 
         /*adding non-functioning buttons to page*/
         JPanel buttonPanel = new JPanel();
@@ -33,6 +46,7 @@ public class adminGUI {
         buttonPanel.add(addFile);
         buttonPanel.add(updateFile);
         buttonPanel.add(removeFile);
+
 
         /* adding footnotes */
         JPanel anchorPanel = new JPanel();
