@@ -11,6 +11,7 @@ public class GUI {
         likely be replaced or removed in later versions
      */
     private String placeholder = "unset";
+    private String booleanValue = "AND";
 
     private String stubMethod() {
         return "Area under Construction";
@@ -24,9 +25,10 @@ public class GUI {
         our boolean selector. It does not return a value, but objects
         are passed by reference in Java. This means the function operates on
         the same content pane as the constructor does, and any changes
-        made here affect the rest of the program.
+        made here affect the rest of the program. I would like this to be it's
+        own file eventually.
      */
-    private void addRadioButtons(Container content) {
+    private void addRadioButtons(JPanel jpanel) {
         /* and button, selected by default */
         JRadioButton andButton = new JRadioButton("And");
         andButton.setActionCommand("AND");
@@ -44,8 +46,10 @@ public class GUI {
         group.add(orButton);
         group.add(matchButton);
 
-        /*  action listeners, the string can be used as the control value
-            for a switch case in the parsing function
+        /*  Action listeners, the string can be used as the control value
+            for a switch case in the parsing function. This is a good canidate
+            for a do over. Using isSelected() might be easier to understand
+            and it'll probably be less to read.
          */
         andButton.addActionListener(new ActionListener() {
            public void actionPerformed( ActionEvent e ) {
@@ -62,6 +66,9 @@ public class GUI {
                 radioHook(matchButton.getActionCommand());
             }
         });
+        jpanel.add(andButton);
+        jpanel.add(orButton);
+        jpanel.add(matchButton);
     }
 
     /*
@@ -96,7 +103,12 @@ public class GUI {
         titlePanel.add(titleLabel);
 
         // radio buttons
-        JPanel radio = new JPanel();
+        // panel to put them on
+        JPanel radioPanel = new JPanel();
+        radioPanel.setBounds(300, 150, 200, 50);
+        radioPanel.setBackground(Color.pink);
+        addRadioButtons(radioPanel);
+        con.add(radioPanel);
 
         // fabulous panel
         JPanel buttonPanel = new JPanel();
