@@ -51,7 +51,7 @@ public class GUI {
         group.add(matchButton);
 
         /*  Action listeners, the string can be used as the control value
-            for a switch case in the parsing function. This is a good canidate
+            for a switch case in the parsing function. This is a good candidate
             for a do over. Using isSelected() might be easier to understand
             and it'll probably be less to read.
          */
