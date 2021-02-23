@@ -1,6 +1,5 @@
-import javax.swing.*;
 import java.awt.*;
-
+import javax.swing.*;
 
 public class adminGUI {
     JFrame frame = new JFrame("BoxLayout");
@@ -21,19 +20,20 @@ public class adminGUI {
         titleLabel.setFont(titleFont);
 
 
-        /* adding tabs*/
+        /* adding tabs for possible future coding
+
         JPanel titlePanel = new JPanel();
-        JPanel p2=new JPanel();
         JPanel p3=new JPanel();
         con.add(titlePanel);
         JTabbedPane tabs=new JTabbedPane();
         tabs.setBounds(20,20,600,500);
         tabs.add("main",titlePanel);
-        tabs.add("visit",p2);
         tabs.add("help",p3);
         adminWindow.add(tabs);
         titlePanel.setBounds(100, 150, 800, 600);
         titlePanel.add(titleLabel);
+
+        */
 
 
         /*adding non-functioning buttons to page*/
