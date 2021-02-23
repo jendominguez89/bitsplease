@@ -1,44 +1,39 @@
-import java.awt.*;
+package bitsSearch;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class adminGUI {
-    JFrame frame = new JFrame("BoxLayout");
-    public static void main (String[] args) {
+    public adminGUI() {
+        // create window
         Container con = new Container();
-
-        /*setting the properties of the webpage*/
-        JFrame adminWindow = new JFrame("GUI Admin");
+        JFrame adminWindow = new JFrame();
+        //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
         Font anchorFont = new Font("Times New Roman", Font.PLAIN, 16);
-        adminWindow.setSize(800,600 );
-        adminWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // set layout and resolution
+        adminWindow.setSize(800, 600);
+        /*
+         *  Turns out when you close the admin window, the search window
+         *  also closes. To stop this, we change EXIT_ON_CLOSE to
+         *  DISPOSE_ON_CLOSE.
+         */
+        adminWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         adminWindow.setLayout(null);
-        adminWindow.setResizable(false);
-        con = adminWindow.getContentPane();
         adminWindow.setVisible(true);
+        // make content pane
+        con = adminWindow.getContentPane();
+        // add title
         JLabel titleLabel = new JLabel("BitsPlease Search Engine");
         titleLabel.setFont(titleFont);
-
-
-        /* adding tabs for possible future coding
-
         JPanel titlePanel = new JPanel();
-        JPanel p3=new JPanel();
         con.add(titlePanel);
-        JTabbedPane tabs=new JTabbedPane();
-        tabs.setBounds(20,20,600,500);
-        tabs.add("main",titlePanel);
-        tabs.add("help",p3);
-        adminWindow.add(tabs);
-        titlePanel.setBounds(100, 150, 800, 600);
+        titlePanel.setBounds(40, 10, 700, 100);
         titlePanel.add(titleLabel);
-
-        */
-
-
-        /*adding non-functioning buttons to page*/
+        // add buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(180,300, 400,50);
+        buttonPanel.setBackground(Color.black);
+        buttonPanel.setBounds(200, 400, 400, 50);
         con.add(buttonPanel);
         JButton addFile = new JButton("Add File");
         JButton updateFile = new JButton("Update");
@@ -46,15 +41,12 @@ public class adminGUI {
         buttonPanel.add(addFile);
         buttonPanel.add(updateFile);
         buttonPanel.add(removeFile);
-
-
-        /* adding footnotes */
+        // adds flavor text
         JPanel anchorPanel = new JPanel();
-        anchorPanel.setBounds(180,500,400, 50);
+        anchorPanel.setBounds(200, 500, 400, 50);
         JLabel anchorText = new JLabel("Searching since 2021");
         anchorText.setFont(anchorFont);
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
     }
-
 }
