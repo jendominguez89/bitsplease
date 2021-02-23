@@ -20,7 +20,6 @@ public class GUI {
         titlePanel.setBounds(40, 10, 700, 100);
         titlePanel.add(titleLabel);
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.pink);
         buttonPanel.setFont(buttonFont);
         buttonPanel.setBounds(200,450,400,50);
         con.add(buttonPanel);
