@@ -32,7 +32,6 @@ public class adminGUI {
         titlePanel.add(titleLabel);
         // add buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.black);
         buttonPanel.setBounds(200, 400, 400, 50);
         con.add(buttonPanel);
         JButton addFile = new JButton("Add File");
