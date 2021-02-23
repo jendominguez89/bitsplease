@@ -111,6 +111,12 @@ public class GUI {
         textPanel.setBounds(100, 150, 600, 35);
         JTextField textBox = new JTextField(25); // arg != hard limit
         textPanel.add(textBox,BorderLayout.CENTER);
+        textBox.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+               placeholder = textBox.getText();
+           }
+        });
+
         JLabel textLabel = new JLabel("Enter Search Term Here:");
         textPanel.add(textLabel,BorderLayout.WEST);
         con.add(textPanel);
