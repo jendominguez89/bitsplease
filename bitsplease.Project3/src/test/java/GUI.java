@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/*
- * add radio buttons
- */
+// refactor folder heirarchy
+// add test file
+
 public class GUI {
     /*
         placeholder values for testing, these will be
@@ -24,9 +24,11 @@ public class GUI {
     /*  This function adds radio buttons to the content pane for
         our boolean selector. It does not return a value, but objects
         are passed by reference in Java. This means the function operates on
-        the same content pane as the constructor does, and any changes
-        made here affect the rest of the program. I would like this to be it's
-        own file eventually.
+        the actual object you pass it, not a copy. This allows us to
+        affect things outside the scope of the function. Any changes
+        made here affect the rest of the program. I would like this
+        kind of thing to be it's own file eventually. For now I'll
+        maintain a code style similar to the rest of the group.
      */
     private void addRadioButtons(JPanel jpanel) {
         /* and button, selected by default */
@@ -71,6 +73,7 @@ public class GUI {
         jpanel.add(matchButton);
     }
 
+
     /*
      *   The fact that this function has no return declared, and
      *  it has the same name as the class, makes this a constructor.
@@ -84,7 +87,7 @@ public class GUI {
         Font titleFont = new Font("Times New Roman", Font.BOLD, 50);
         Font buttonFont = new Font("Times New Roman", Font.PLAIN, 20);
         // make window
-        Container con = new Container();
+        Container con;
         javax.swing.JFrame adminWindow = new javax.swing.JFrame();
         adminWindow.setSize(800,600);
         adminWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
@@ -102,10 +105,20 @@ public class GUI {
         titlePanel.setBounds(40, 10, 700, 100);
         titlePanel.add(titleLabel);
 
+        // textbox
+        JPanel textPanel = new JPanel(new BorderLayout());
+        //textPanel.setBackground(Color.blue);
+        textPanel.setBounds(100, 150, 600, 35);
+        JTextField textBox = new JTextField(25); // arg != hard limit
+        textPanel.add(textBox,BorderLayout.CENTER);
+        JLabel textLabel = new JLabel("Enter Search Term Here:");
+        textPanel.add(textLabel,BorderLayout.WEST);
+        con.add(textPanel);
+
         // radio buttons
         // panel to put them on
         JPanel radioPanel = new JPanel();
-        radioPanel.setBounds(300, 150, 200, 50);
+        radioPanel.setBounds(300, 200, 200, 50);
         radioPanel.setBackground(Color.pink);
         addRadioButtons(radioPanel);
         con.add(radioPanel);
@@ -117,7 +130,7 @@ public class GUI {
         buttonPanel.setBounds(200,450,400,50);
         con.add(buttonPanel);
 
-        // regular buttons
+        // real buttons
         JButton addSearchInfo = new JButton("Search");
         addSearchInfo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -154,6 +167,17 @@ public class GUI {
         buttonPanel.add(updateSearchInfo);
         buttonPanel.add(removeSearchInfo);
         buttonPanel.add(adminButton);
+
+        /*  Adding elements is turning the window blank. This should
+            stop it for the moment but the error means we should change the
+            way we instantiate the window. Also just noticed that we
+            named the search window "adminWindow", that should probably
+            be different.
+         */
+        adminWindow.invalidate();
+        adminWindow.validate();
+        adminWindow.repaint();
+        textBox.requestFocusInWindow();
     }
     /*
      *   Putting main in this file for now since its the first window
