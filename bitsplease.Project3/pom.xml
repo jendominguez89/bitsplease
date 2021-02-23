@@ -8,24 +8,17 @@
     <artifactId>bitsplease.Project3</artifactId>
     <version>1.0-SNAPSHOT</version>
     <url>https://github.com/Null-Entry/bitsplease.git</url>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
     </properties>
-    <dependency>
+    <dependencies>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.1</version>
             <scope>test</scope>
-    </dependency>
-
+        </dependency>
+    </dependencies>
 
 </project>
