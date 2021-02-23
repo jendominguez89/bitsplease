@@ -143,18 +143,18 @@ public class GUI {
                 placeholder = stubMethod();
             }
         });
-        JButton updateSearchInfo = new JButton("Update");
-        updateSearchInfo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                placeholder = stubMethod();
-            }
-        });
-        JButton removeSearchInfo = new JButton("Delete");
-        removeSearchInfo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                placeholder = stubMethod();
-            }
-        });
+//        JButton updateSearchInfo = new JButton("Update");
+//        updateSearchInfo.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                placeholder = stubMethod();
+//            }
+//        });
+//        JButton removeSearchInfo = new JButton("Delete");
+//        removeSearchInfo.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                placeholder = stubMethod();
+//            }
+//
         JButton adminButton = new JButton("Settings");
         adminButton.addActionListener(new ActionListener() {
             /* actionPerformed must be present, although it can
@@ -170,8 +170,8 @@ public class GUI {
              */
         });
         buttonPanel.add(addSearchInfo);
-        buttonPanel.add(updateSearchInfo);
-        buttonPanel.add(removeSearchInfo);
+//      buttonPanel.add(updateSearchInfo);  // disabling update and remove buttons in case needed later
+//      buttonPanel.add(removeSearchInfo);
         buttonPanel.add(adminButton);
 
         /*  Adding elements is turning the window blank. This should
