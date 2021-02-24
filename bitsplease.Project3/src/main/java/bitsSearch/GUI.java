@@ -145,23 +145,6 @@ public class GUI {
             }
         });
 
-        /* Buttons are not used for this window.
-
-        JButton updateSearchInfo = new JButton("Update");
-        updateSearchInfo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                placeholder = stubMethod();
-            }
-        });
-        JButton removeSearchInfo = new JButton("Delete");
-        removeSearchInfo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                placeholder = stubMethod();
-            }
-        });
-
-        */
-
         JButton adminButton = new JButton("Settings");
         adminButton.addActionListener(new ActionListener() {
             /* actionPerformed must be present, although it can
