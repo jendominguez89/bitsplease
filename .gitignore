@@ -17,7 +17,7 @@
 *.ear
 *.zip
 *.tar.gz
-*.rar
+*.rargit
 .idea
 *.iml
 
