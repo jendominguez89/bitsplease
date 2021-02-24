@@ -1,7 +1,10 @@
 package bitsSearch;
 
 import javax.swing.*;
+import javax.swing.tree.AbstractLayoutCache;
 import java.awt.*;
+
+import static javax.swing.JTable.*;
 
 public class adminGUI {
     public adminGUI() {
@@ -37,7 +40,21 @@ public class adminGUI {
         titlePanel.setBounds(40, 10, 700, 100);
         titlePanel.add(titleLabel);
 
-        // add buttons
+
+        // adding table
+           JPanel tablePanel = new JPanel();
+           tablePanel.setBounds(180,200,400,200);
+           con.add(tablePanel);
+           JTable table = new JTable(3,3);
+           table.getColumnModel().getColumn(0).setHeaderValue("File Name");
+           table.getColumnModel().getColumn(1).setHeaderValue("File Status");
+           table.getColumnModel().getColumn(2).setHeaderValue("File Date");
+           JScrollPane sp=new JScrollPane(table);
+           tablePanel.add(sp);
+           tablePanel.setVisible(true);
+
+
+    // add buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBounds(200, 400, 400, 50);
         con.add(buttonPanel);
@@ -55,5 +72,8 @@ public class adminGUI {
         anchorText.setFont(anchorFont);
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
+    }
+
+    private void adminWindow() {
     }
 }

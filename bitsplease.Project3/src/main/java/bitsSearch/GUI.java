@@ -4,9 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// refactor folder hierachy
-// add test file
-
 public class GUI {
     /*
         placeholder values for testing, these will be
