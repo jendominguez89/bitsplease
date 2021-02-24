@@ -40,7 +40,6 @@ public class adminGUI {
         titlePanel.setBounds(40, 10, 700, 100);
         titlePanel.add(titleLabel);
 
-
         // adding table
            JPanel tablePanel = new JPanel();
            tablePanel.setBounds(180,200,400,200);
@@ -52,7 +51,6 @@ public class adminGUI {
            JScrollPane sp=new JScrollPane(table);
            tablePanel.add(sp);
            tablePanel.setVisible(true);
-
 
     // add buttons
         JPanel buttonPanel = new JPanel();
@@ -74,6 +72,4 @@ public class adminGUI {
         con.add(anchorPanel);
     }
 
-    private void adminWindow() {
-    }
 }
