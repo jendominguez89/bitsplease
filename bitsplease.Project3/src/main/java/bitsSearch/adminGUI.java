@@ -10,7 +10,7 @@ public class adminGUI {
 
         // create window
         Container con = new Container();
-        JFrame adminWindow = new JFrame();
+        JFrame adminWindow = new JFrame("GUI Admin");
 
         //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);

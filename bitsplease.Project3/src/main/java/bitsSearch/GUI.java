@@ -72,7 +72,6 @@ public class GUI {
         jpanel.add(matchButton);
     }
 
-
     /*
      *   The fact that this function has no return declared, and
      *  it has the same name as the class, makes this a constructor.
@@ -87,7 +86,7 @@ public class GUI {
         Font buttonFont = new Font("Times New Roman", Font.PLAIN, 20);
         // make window
         Container con;
-        javax.swing.JFrame adminWindow = new javax.swing.JFrame();
+        javax.swing.JFrame adminWindow = new javax.swing.JFrame("BitsPlease Search Tool");
         adminWindow.setSize(800,600);
         adminWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         adminWindow.setLayout(null);
