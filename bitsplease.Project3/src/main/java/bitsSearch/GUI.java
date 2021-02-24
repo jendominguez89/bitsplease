@@ -145,7 +145,8 @@ public class GUI {
             }
         });
 
-        /*
+        /* Buttons are not used for this window.
+
         JButton updateSearchInfo = new JButton("Update");
         updateSearchInfo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
