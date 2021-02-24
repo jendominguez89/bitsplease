@@ -4,9 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// refactor folder heirarchy
-// add test file
-
 public class GUI {
     /*
         placeholder values for testing, these will be
@@ -40,7 +37,7 @@ public class GUI {
         /* or button */
         JRadioButton orButton = new JRadioButton("Or");
         orButton.setActionCommand("OR");
-        /* exact match button, refered to as 'match' */
+        /* exact match button, referred to as 'match' */
         JRadioButton matchButton = new JRadioButton("Exact Match");
         matchButton.setActionCommand("MATCH");
 
@@ -51,7 +48,7 @@ public class GUI {
         group.add(matchButton);
 
         /*  Action listeners, the string can be used as the control value
-            for a switch case in the parsing function. This is a good canidate
+            for a switch case in the parsing function. This is a good candidate
             for a do over. Using isSelected() might be easier to understand
             and it'll probably be less to read.
          */
@@ -75,7 +72,6 @@ public class GUI {
         jpanel.add(matchButton);
     }
 
-
     /*
      *   The fact that this function has no return declared, and
      *  it has the same name as the class, makes this a constructor.
@@ -90,15 +86,14 @@ public class GUI {
         Font buttonFont = new Font("Times New Roman", Font.PLAIN, 20);
         // make window
         Container con;
-        javax.swing.JFrame searchWindow = new javax.swing.JFrame();
-        searchWindow.setSize(800,600);
-        searchWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        searchWindow.setLayout(null);
-        searchWindow.setVisible(true);
-        searchWindow.setResizable(false);
+        javax.swing.JFrame adminWindow = new javax.swing.JFrame("BitsPlease Search Tool");
+        adminWindow.setSize(800,600);
+        adminWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        adminWindow.setLayout(null);
+        adminWindow.setVisible(true);
 
         // content pane
-        con = searchWindow.getContentPane();
+        con = adminWindow.getContentPane();
 
         // title text
         JLabel titleLabel = new JLabel("BitsPlease Get Searching");
@@ -120,7 +115,7 @@ public class GUI {
            }
         });
 
-        JLabel textLabel = new JLabel("Enter Search Term Here:");
+        JLabel textLabel = new JLabel("Enter Search Term Here:  ");
         textPanel.add(textLabel,BorderLayout.WEST);
         con.add(textPanel);
 
@@ -131,7 +126,7 @@ public class GUI {
         addRadioButtons(radioPanel);
         con.add(radioPanel);
 
-        // fabulous panel
+        // regular panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.setFont(buttonFont);
         buttonPanel.setBounds(200,450,400,50);
@@ -144,23 +139,18 @@ public class GUI {
                 placeholder = stubMethod();
             }
         });
-
-        /*
-        JButton updateSearchInfo = new JButton("Update");
-        updateSearchInfo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                placeholder = stubMethod();
-            }
-        });
-        JButton removeSearchInfo = new JButton("Delete");
-        removeSearchInfo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                placeholder = stubMethod();
-            }
-        });
-
-        */
-
+//        JButton updateSearchInfo = new JButton("Update");
+//        updateSearchInfo.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                placeholder = stubMethod();
+//            }
+//        });
+//        JButton removeSearchInfo = new JButton("Delete");
+//        removeSearchInfo.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                placeholder = stubMethod();
+//            }
+//
         JButton adminButton = new JButton("Settings");
         adminButton.addActionListener(new ActionListener() {
             /* actionPerformed must be present, although it can
@@ -176,12 +166,8 @@ public class GUI {
              */
         });
         buttonPanel.add(addSearchInfo);
-
-       /*
-       buttonPanel.add(updateSearchInfo);
-       buttonPanel.add(removeSearchInfo);
-       */
-
+//      buttonPanel.add(updateSearchInfo);  // disabling update and remove buttons in case needed later
+//      buttonPanel.add(removeSearchInfo);
         buttonPanel.add(adminButton);
 
         /*  Adding elements is turning the window blank. This should
@@ -190,9 +176,9 @@ public class GUI {
             named the search window "adminWindow", that should probably
             be different.
          */
-        searchWindow.invalidate();
-        searchWindow.validate();
-        searchWindow.repaint();
+        adminWindow.invalidate();
+        adminWindow.validate();
+        adminWindow.repaint();
         textBox.requestFocusInWindow();
     }
     /*
