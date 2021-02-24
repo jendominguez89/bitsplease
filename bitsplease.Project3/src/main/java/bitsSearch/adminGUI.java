@@ -1,10 +1,9 @@
 package bitsSearch;
 
 import javax.swing.*;
-import javax.swing.tree.AbstractLayoutCache;
 import java.awt.*;
 
-import static javax.swing.JTable.*;
+
 
 public class adminGUI {
     public adminGUI() {
