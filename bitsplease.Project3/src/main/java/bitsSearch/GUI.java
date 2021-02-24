@@ -90,14 +90,15 @@ public class GUI {
         Font buttonFont = new Font("Times New Roman", Font.PLAIN, 20);
         // make window
         Container con;
-        javax.swing.JFrame adminWindow = new javax.swing.JFrame();
-        adminWindow.setSize(800,600);
-        adminWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        adminWindow.setLayout(null);
-        adminWindow.setVisible(true);
+        javax.swing.JFrame searchWindow = new javax.swing.JFrame();
+        searchWindow.setSize(800,600);
+        searchWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        searchWindow.setLayout(null);
+        searchWindow.setVisible(true);
+        searchWindow.setResizable(false);
 
         // content pane
-        con = adminWindow.getContentPane();
+        con = searchWindow.getContentPane();
 
         // title text
         JLabel titleLabel = new JLabel("BitsPlease Get Searching");
@@ -189,9 +190,9 @@ public class GUI {
             named the search window "adminWindow", that should probably
             be different.
          */
-        adminWindow.invalidate();
-        adminWindow.validate();
-        adminWindow.repaint();
+        searchWindow.invalidate();
+        searchWindow.validate();
+        searchWindow.repaint();
         textBox.requestFocusInWindow();
     }
     /*
