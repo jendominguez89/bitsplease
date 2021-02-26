@@ -12,6 +12,10 @@ public class adminGUI {
         Container con = new Container();
         JFrame adminWindow = new JFrame("GUI Admin");
 
+        //add super cool icon
+        ImageIcon kirby	= new ImageIcon("C:\\Users\\jendo\\OneDrive\\Pictures\\kirby.jpg");
+        adminWindow.setIconImage(kirby.getImage());
+
         //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
         Font anchorFont = new Font("Times New Roman", Font.PLAIN, 16);
@@ -53,7 +57,7 @@ public class adminGUI {
 
     // add buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(200, 400, 400, 50);
+        buttonPanel.setBounds(200, 350, 400, 50);
         con.add(buttonPanel);
         JButton addFile = new JButton("Add File");
         JButton updateFile = new JButton("Update");
