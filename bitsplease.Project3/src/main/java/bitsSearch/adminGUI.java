@@ -13,7 +13,7 @@ public class adminGUI {
         JFrame adminWindow = new JFrame("GUI Admin");
 
         //add super cool icon
-        ImageIcon luigi	= new ImageIcon("C:\\Users\\jendo\\OneDrive\\Pictures\\luigi.jpg");
+        ImageIcon luigi	= new ImageIcon("C:\\Users\\jendo\\IdeaProjects\\bitsplease\\bitsplease.Project3\\src\\main\\resources\\luigi.jpg");
         adminWindow.setIconImage(luigi.getImage());
 
 
