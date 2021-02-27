@@ -87,8 +87,8 @@ public class GUI {
         // make window
         Container con;
         javax.swing.JFrame adminWindow = new javax.swing.JFrame("BitsPlease Search Tool");
-        ImageIcon link = new ImageIcon("C:\\Users\\jendo\\OneDrive\\Pictures\\link.jpg");
-        adminWindow.setIconImage(link.getImage()); // ** See Description
+        ImageIcon mario = new ImageIcon("C:\\Users\\jendo\\OneDrive\\Pictures\\mario.jpg");
+        adminWindow.setIconImage(mario.getImage()); // ** See Description
         adminWindow.setSize(800,600);
         adminWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         adminWindow.setLayout(null);
