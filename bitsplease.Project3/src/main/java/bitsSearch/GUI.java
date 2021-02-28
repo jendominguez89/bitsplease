@@ -53,9 +53,9 @@ public class GUI {
             and it'll probably be less to read.
          */
         andButton.addActionListener(new ActionListener() {
-           public void actionPerformed( ActionEvent e ) {
-               radioHook(andButton.getActionCommand());
-           }
+            public void actionPerformed( ActionEvent e ) {
+                radioHook(andButton.getActionCommand());
+            }
         });
         orButton.addActionListener(new ActionListener() {
             public void actionPerformed( ActionEvent e ) {
@@ -87,8 +87,8 @@ public class GUI {
         // make window
         Container con;
         javax.swing.JFrame searchWindow = new javax.swing.JFrame("BitsPlease Search Tool");
-        ImageIcon kirbs	= new ImageIcon(getClass().getResource("/kirbs.jpg"));
-        searchWindow.setIconImage(kirbs.getImage());
+        ImageIcon link	= new ImageIcon(getClass().getResource("/link.jpg"));
+        searchWindow.setIconImage(link.getImage());
         searchWindow.setSize(800,600);
         searchWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         searchWindow.setLayout(null);
@@ -112,9 +112,9 @@ public class GUI {
         JTextField textBox = new JTextField(25); // arg != hard limit
         textPanel.add(textBox,BorderLayout.CENTER);
         textBox.addActionListener(new ActionListener(){
-           public void actionPerformed(ActionEvent e) {
-               placeholder = textBox.getText();
-           }
+            public void actionPerformed(ActionEvent e) {
+                placeholder = textBox.getText();
+            }
         });
 
         JLabel textLabel = new JLabel("Enter Search Term Here:  ");
@@ -162,6 +162,7 @@ public class GUI {
         /*  Adding elements is turning the window blank. This should
             stop it for the moment but the error means we should change the
             way we instantiate the window.
+
          */
         searchWindow.invalidate();
         searchWindow.validate();
@@ -176,6 +177,5 @@ public class GUI {
 
     public static void main(String[] args) {
         GUI gui = new GUI();
-        // adminGUI admin = new adminGUI();
     }
 }
