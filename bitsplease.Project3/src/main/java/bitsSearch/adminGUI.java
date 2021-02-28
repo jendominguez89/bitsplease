@@ -12,8 +12,8 @@ public class adminGUI {
         JFrame adminWindow = new JFrame("GUI Admin");
 
         // add super cool icon
-        ImageIcon link	= new ImageIcon(getClass().getResource("/link.jpg"));
-        adminWindow.setIconImage(link.getImage());
+        ImageIcon kirbs	= new ImageIcon(getClass().getResource("/kirbs.jpg"));
+        adminWindow.setIconImage(kirbs.getImage());
 
         //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
