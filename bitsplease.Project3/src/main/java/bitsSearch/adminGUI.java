@@ -6,13 +6,16 @@ import javax.swing.*;
 import java.awt.*;
 
 
-
 public class adminGUI {
     public adminGUI() {
 
         // create window
         Container con = new Container();
         JFrame adminWindow = new JFrame("GUI Admin");
+
+        // add super cool icon
+        ImageIcon link	= new ImageIcon(getClass().getResource("/link.jpg"));
+        adminWindow.setIconImage(link.getImage());
 
         //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
@@ -43,9 +46,9 @@ public class adminGUI {
 
         // adding table
            JPanel tablePanel = new JPanel();
-           tablePanel.setBounds(180,200,400,200);
+           tablePanel.setBounds(180,150,400,200);
            con.add(tablePanel);
-           JTable table = new JTable(3,3);
+           JTable table = new JTable(6,3);
            table.getColumnModel().getColumn(0).setHeaderValue("File Name");
            table.getColumnModel().getColumn(1).setHeaderValue("File Status");
            table.getColumnModel().getColumn(2).setHeaderValue("File Date");
@@ -55,7 +58,7 @@ public class adminGUI {
 
     // add buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(200, 400, 400, 50);
+        buttonPanel.setBounds(185, 350, 400, 50);
         con.add(buttonPanel);
         JButton addFile = new JButton("Add File");
         JButton updateFile = new JButton("Update");
