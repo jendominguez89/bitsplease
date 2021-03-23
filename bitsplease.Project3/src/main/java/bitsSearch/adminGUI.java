@@ -1,12 +1,22 @@
-
-
 package bitsSearch;
 
+import com.google.gson.Gson;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.*;
 import java.awt.*;
 
 public class adminGUI {
+    private String doesNothing () {return "Nothing here to see"};
     public adminGUI() {
+        String PathTesting = ("D:\\InteliJ\\bitsplease\\bitsplease.Project3\\src\\test\\TestResource\\PathTesting");
         // create window
         Container con = new Container();
         JFrame adminWindow = new JFrame();
@@ -49,5 +59,43 @@ public class adminGUI {
         anchorText.setFont(anchorFont);
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
+
+
+        //Button functionality for future use.
+        removeFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) { doesNothing();
+            }
+        });
+
+        updateFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) { doesNothing();
+            }
+        });
+
+        addFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) { doesNothing();
+            }
+        });
+
+
+        //Class that defines what data is collected for our JSon file.
+        class indexFile {
+           String name;
+           String modifyDate;
+           boolean wasModified;
+        }
+
+        // function that reads files and writes the data to a JSon file.
+        public void writeFilesToJson (String fileName) throws FileNotFoundException {
+            indexFile file = new indexFile();
+            Gson gson = new Gson();
+            String json = gson.toJson(file);
+
+        }
+
     }
 }
+
+
+
+47
