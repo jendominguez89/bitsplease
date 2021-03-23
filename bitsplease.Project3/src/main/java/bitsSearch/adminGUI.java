@@ -2,9 +2,19 @@
 
 package bitsSearch;
 
+import bitsSearch.models.IndexModel;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class adminGUI {
@@ -63,7 +73,29 @@ public class adminGUI {
         buttonPanel.add(addFile);
         buttonPanel.add(updateFile);
         buttonPanel.add(removeFile);
-
+        addFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IndexModel im = new IndexModel();
+                //type from string to set of strings set index is taking a hashmap ... (variable index)
+                HashMap<String, Set<String>> index = new HashMap<String, Set<String>>();
+                HashSet<String> Set = new HashSet<>();
+                Set.add("Annie On My Mind");
+                index.put("Bear", Set);
+                im.setIndex(index);
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    objectMapper.writeValue(new File("c:\\Users\\sschl\\Desktop\\out\\index.json"),im);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                try {
+                    IndexModel im2 = objectMapper.readValue(new File("c:\\Users\\sschl\\Desktop\\out\\index.json"),IndexModel.class);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
+        });
         // adds flavor text
         JPanel anchorPanel = new JPanel();
         anchorPanel.setBounds(200, 500, 400, 50);
@@ -72,5 +104,7 @@ public class adminGUI {
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
     }
-
+    public static void main(String[] args) {
+        adminGUI admin = new adminGUI();
+    }
 }
