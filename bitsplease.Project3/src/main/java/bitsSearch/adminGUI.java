@@ -2,10 +2,13 @@ package bitsSearch;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 
 public class adminGUI {
+    private String doesNothing () {return "Nothing here to see";}
     public adminGUI() {
 
         // create window
@@ -75,24 +78,38 @@ public class adminGUI {
         con.add(anchorPanel);
 
         // select files for indexing
-        SwingUtilities.invokeLater(() -> {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        removeFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                doesNothing();
             }
-            catch (Exception ignored) {}
-            JFileChooser fileChooser = new JFileChooser( "." );
-            int status = fileChooser.showOpenDialog( null );
-            if (status == JFileChooser.APPROVE_OPTION) {
-                File selectedFile = fileChooser.getSelectedFile();
-                System.out.println( "Selected: " + selectedFile.getParent()
-                        + " --- " + selectedFile.getName() );
-            }
-            System.exit( 0 );
         });
 
+        updateFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                doesNothing();
+            }
+        });
 
+        addFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {SelectFile();
+            }
+        });
+    }
+        public static void SelectFile () {
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception ignored) {
+                }
+                JFileChooser fileChooser = new JFileChooser(".");
+                int status = fileChooser.showOpenDialog(null);
+                if (status == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    System.out.println("Selected: " + selectedFile.getParent()
+                            + " --- " + selectedFile.getName());
+                }
+                System.exit(0);
+            });
 
         }
 }
-
-
