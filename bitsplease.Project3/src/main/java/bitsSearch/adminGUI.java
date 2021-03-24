@@ -2,23 +2,23 @@
 
 package bitsSearch;
 
-import bitsSearch.models.IndexModel;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import bitsSearch.models.IndexFile;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.*;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class adminGUI {
-    public adminGUI() {
+    private List<IndexFile> files = new ArrayList<>();
+    private Gson gson = new Gson();
+
+    public adminGUI() throws IOException {
 
         // create window
         Container con = new Container();
@@ -52,18 +52,18 @@ public class adminGUI {
         titlePanel.add(titleLabel);
 
         // adding table
-           JPanel tablePanel = new JPanel();
-           tablePanel.setBounds(180,200,400,200);
-           con.add(tablePanel);
-           JTable table = new JTable(3,3);
-           table.getColumnModel().getColumn(0).setHeaderValue("File Name");
-           table.getColumnModel().getColumn(1).setHeaderValue("File Status");
-           table.getColumnModel().getColumn(2).setHeaderValue("File Date");
-           JScrollPane sp=new JScrollPane(table);
-           tablePanel.add(sp);
-           tablePanel.setVisible(true);
+        JPanel tablePanel = new JPanel();
+        tablePanel.setBounds(180, 200, 400, 200);
+        con.add(tablePanel);
+        JTable table = new JTable(3, 3);
+        table.getColumnModel().getColumn(0).setHeaderValue("File Name");
+        table.getColumnModel().getColumn(1).setHeaderValue("File Status");
+        table.getColumnModel().getColumn(2).setHeaderValue("File Date");
+        JScrollPane sp = new JScrollPane(table);
+        tablePanel.add(sp);
+        tablePanel.setVisible(true);
 
-    // add buttons
+        // add buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBounds(200, 400, 400, 50);
         con.add(buttonPanel);
@@ -73,29 +73,7 @@ public class adminGUI {
         buttonPanel.add(addFile);
         buttonPanel.add(updateFile);
         buttonPanel.add(removeFile);
-        addFile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                IndexModel im = new IndexModel();
-                //type from string to set of strings set index is taking a hashmap ... (variable index)
-                HashMap<String, Set<String>> index = new HashMap<String, Set<String>>();
-                HashSet<String> Set = new HashSet<>();
-                Set.add("Annie On My Mind");
-                index.put("Bear", Set);
-                im.setIndex(index);
-                ObjectMapper objectMapper = new ObjectMapper();
-                try {
-                    objectMapper.writeValue(new File("c:\\Users\\sschl\\Desktop\\out\\index.json"),im);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-                try {
-                    IndexModel im2 = objectMapper.readValue(new File("c:\\Users\\sschl\\Desktop\\out\\index.json"),IndexModel.class);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-            }
-        });
+
         // adds flavor text
         JPanel anchorPanel = new JPanel();
         anchorPanel.setBounds(200, 500, 400, 50);
@@ -103,7 +81,41 @@ public class adminGUI {
         anchorText.setFont(anchorFont);
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
+        load();
+
+        // add button on click
+        // select file dialoge
+        // add index file to above list (this.files)
+        // call save
     }
+
+    private void save() throws IOException {
+        File f = new File("files.json");
+        try (FileWriter bw = new FileWriter(f)) {
+            String raw = gson.toJson(this.files);
+            bw.write(raw);
+        }
+    }
+    // sam
+
+    private void load() throws IOException {
+        File f = new File("files.json");
+        if (!f.exists()) {
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        try (FileReader bw = new FileReader(f)) {
+          try(BufferedReader reader = new BufferedReader(bw)){
+             String line;
+             while((line = reader.readLine()) != null){
+                 sb.append(line);
+             }
+         }
+        }
+        Type collectionType = new TypeToken<ArrayList<IndexFile>>(){}.getType();
+        this.files = gson.fromJson(sb.toString(), collectionType);
+    }
+
     public static void main(String[] args) {
         adminGUI admin = new adminGUI();
     }
