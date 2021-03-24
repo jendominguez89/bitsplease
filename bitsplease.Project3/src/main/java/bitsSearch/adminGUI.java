@@ -92,12 +92,12 @@ public class adminGUI {
         });
     }
         //Class that defines what data is collected for our JSon file.
-        public static class indexFile {
+        public static class IndexFile {
             private String name;
             private String modifyDate;
             private boolean modified;
 
-            public indexFile(File Name) {
+            public IndexFile(File Name) {
                 this.name = Name.toString();
             }
            /*
@@ -132,9 +132,9 @@ public class adminGUI {
         map.put("name", file.toString());
 
         */
-        adminGUI.indexFile indexFile = new indexFile(adminGUI.file);
+        adminGUI.IndexFile IndexFile = new IndexFile(adminGUI.file);
         Writer writer = new FileWriter("SearchIndexTesting");
-        new Gson().toJson(indexFile, writer);
+        new Gson().toJson(IndexFile, writer);
         writer.close();
 
         if (file.exists()){
