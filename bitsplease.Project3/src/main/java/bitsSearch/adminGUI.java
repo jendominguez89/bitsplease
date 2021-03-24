@@ -2,6 +2,7 @@ package bitsSearch;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 
 public class adminGUI {
@@ -43,18 +44,18 @@ public class adminGUI {
         titlePanel.add(titleLabel);
 
         // adding table
-           JPanel tablePanel = new JPanel();
-           tablePanel.setBounds(180,150,400,200);
-           con.add(tablePanel);
-           JTable table = new JTable(6,3);
-           table.getColumnModel().getColumn(0).setHeaderValue("File Name");
-           table.getColumnModel().getColumn(1).setHeaderValue("File Status");
-           table.getColumnModel().getColumn(2).setHeaderValue("File Date");
-           JScrollPane sp=new JScrollPane(table);
-           tablePanel.add(sp);
-           tablePanel.setVisible(true);
+        JPanel tablePanel = new JPanel();
+        tablePanel.setBounds(180,150,400,200);
+        con.add(tablePanel);
+        JTable table = new JTable(6,3);
+        table.getColumnModel().getColumn(0).setHeaderValue("File Name");
+        table.getColumnModel().getColumn(1).setHeaderValue("File Status");
+        table.getColumnModel().getColumn(2).setHeaderValue("File Date");
+        JScrollPane sp=new JScrollPane(table);
+        tablePanel.add(sp);
+        tablePanel.setVisible(true);
 
-    // add buttons
+        // add buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBounds(185, 350, 400, 50);
         con.add(buttonPanel);
@@ -72,6 +73,26 @@ public class adminGUI {
         anchorText.setFont(anchorFont);
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
-    }
 
+        // select files for indexing
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            }
+            catch (Exception ignored) {}
+            JFileChooser fileChooser = new JFileChooser( "." );
+            int status = fileChooser.showOpenDialog( null );
+            if (status == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                System.out.println( "Selected: " + selectedFile.getParent()
+                        + " --- " + selectedFile.getName() );
+            }
+            System.exit( 0 );
+        });
+
+
+
+        }
 }
+
+
