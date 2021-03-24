@@ -1,21 +1,28 @@
 package bitsSearch;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class adminGUI {
-    private String doesNothing () {return "Nothing here to see"};
+    //Added field to hold file for function for testing purposes.
+    private static File file = new File("D:\\InteliJ\\bitsplease\\bitsplease.Project3\\src\\test\\java\\bitsSearch\\PathTest.java");
+
+    private String doesNothing () {return "Nothing here to see";}
+
     public adminGUI() {
+
         String PathTesting = ("D:\\InteliJ\\bitsplease\\bitsplease.Project3\\src\\test\\TestResource\\PathTesting");
         // create window
         Container con = new Container();
@@ -63,39 +70,79 @@ public class adminGUI {
 
         //Button functionality for future use.
         removeFile.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { doesNothing();
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    writeToJson(file);
+                } catch (IOException ioException) {
+                    System.out.println("No can dooski brudda");
+                }
             }
         });
 
         updateFile.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { doesNothing();
+            public void actionPerformed(ActionEvent e) {
+                doesNothing();
             }
         });
 
         addFile.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { doesNothing();
+            public void actionPerformed(ActionEvent e) {
+                doesNothing();
             }
         });
-
-
-        //Class that defines what data is collected for our JSon file.
-        class indexFile {
-           String name;
-           String modifyDate;
-           boolean wasModified;
-        }
-
-        // function that reads files and writes the data to a JSon file.
-        public void writeFilesToJson (String fileName) throws FileNotFoundException {
-            indexFile file = new indexFile();
-            Gson gson = new Gson();
-            String json = gson.toJson(file);
-
-        }
-
     }
+        //Class that defines what data is collected for our JSon file.
+        public static class indexFile {
+            private String name;
+            private String modifyDate;
+            private boolean modified;
+
+            public indexFile(File Name) {
+                this.name = Name.toString();
+            }
+           /*
+           public String getName() {
+                return this.name;
+            }
+
+            public void setName(String filePath) {
+                this.name = filePath;
+            }
+
+            public String getModifyDate() {
+                return modifyDate;
+            }
+
+            public void setModifyDate(String modifyDate) {
+                this.modifyDate = modifyDate;
+            }
+
+            public boolean ismodified() {
+                return modified;
+            }
+
+            public void setmodified(boolean modified) {
+                this.modified = modified;
+
+            */
+        }
+    //Function will accept a file and create a Hashmap to write information to a Json file.
+    public static void writeToJson(File fileName) throws IOException, FileNotFoundException {
+       /* Map<String, Object> map = new HashMap<>();
+        map.put("name", file.toString());
+
+        */
+        adminGUI.indexFile indexFile = new indexFile(adminGUI.file);
+        Writer writer = new FileWriter("SearchIndexTesting");
+        new Gson().toJson(indexFile, writer);
+        writer.close();
+
+        if (file.exists()){
+            Date lastModified = new Date(file.lastModified());
+        }
+    }
+
 }
 
 
 
-47
