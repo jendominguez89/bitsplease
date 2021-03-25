@@ -3,6 +3,7 @@
 package bitsSearch;
 
 import bitsSearch.models.IndexFile;
+import bitsSearch.repositories.FileRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -16,9 +17,18 @@ import java.util.List;
 
 public class adminGUI {
     private List<IndexFile> files = new ArrayList<>();
-    private Gson gson = new Gson();
+    private FileRepository fileRepository = new FileRepository();
 
-    public adminGUI() throws IOException {
+    public adminGUI() {
+        try {
+            files = fileRepository.load();
+            for(IndexFile f:files){
+                // file has been changed for every file that != exist
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // create window
         Container con = new Container();
@@ -81,40 +91,10 @@ public class adminGUI {
         anchorText.setFont(anchorFont);
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
-        load();
 
-        // add button on click
-        // select file dialoge
-        // add index file to above list (this.files)
-        // call save
+
     }
 
-    private void save() throws IOException {
-        File f = new File("files.json");
-        try (FileWriter bw = new FileWriter(f)) {
-            String raw = gson.toJson(this.files);
-            bw.write(raw);
-        }
-    }
-    // sam
-
-    private void load() throws IOException {
-        File f = new File("files.json");
-        if (!f.exists()) {
-            return;
-        }
-        StringBuilder sb = new StringBuilder();
-        try (FileReader bw = new FileReader(f)) {
-          try(BufferedReader reader = new BufferedReader(bw)){
-             String line;
-             while((line = reader.readLine()) != null){
-                 sb.append(line);
-             }
-         }
-        }
-        Type collectionType = new TypeToken<ArrayList<IndexFile>>(){}.getType();
-        this.files = gson.fromJson(sb.toString(), collectionType);
-    }
 
     public static void main(String[] args) {
         adminGUI admin = new adminGUI();
