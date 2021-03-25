@@ -168,7 +168,7 @@ public class GUI {
              * be defined in its own block
              */
             public void actionPerformed(ActionEvent e) {
-                adminGUI admin = new adminGUI(); // creates admin window
+                AdminGUI admin = new AdminGUI(); // creates admin window
             }
             /*  Normally you wouldn't need a semicolon after a }
                 but this is still contained in a parenthesis, so
@@ -204,6 +204,5 @@ public class GUI {
 
     public static void main(String[] args) {
         GUI gui = new GUI();
-        // adminGUI admin = new adminGUI();
     }
 }
