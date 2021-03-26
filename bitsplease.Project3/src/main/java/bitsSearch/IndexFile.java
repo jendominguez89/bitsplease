@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.Date;
 
 public class IndexFile {
-
+        //Hard coded for testing purposes.
         public static File file = new File("D:\\InteliJ\\bitsplease\\bitsplease.Project3\\src\\test\\java\\bitsSearch\\PathTest.java");
         private String name;
         private String modifyDate;
@@ -40,7 +40,7 @@ public class IndexFile {
             this.modified = modified;
 
         }
-        //Function will accept a file and create a Hashmap to write information to a Json file.
+        //Function will accept a file and write information to a Json file.
         public static void writeToJson(File fileName) throws IOException, FileNotFoundException {
             bitsSearch.IndexFile IndexFile = new bitsSearch.IndexFile(file);
             Writer writer = new FileWriter("SearchIndexTesting");
