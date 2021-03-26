@@ -24,6 +24,9 @@ public class adminGUI {
             files = fileRepository.load();
             for(IndexFile f:files){
                 // file has been changed for every file that != exist
+                if files =! true;
+                // print files do not exist
+                System.out.println("The file you are searching for was removed and does not exist.");
             }
 
         } catch (IOException e) {
