@@ -7,17 +7,17 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 
-public class adminGUI {
+public class AdminGUI {
     private String doesNothing () {return "Nothing here to see";}
-    public adminGUI() {
+    public AdminGUI() {
 
         // create window
         Container con = new Container();
-        JFrame adminWindow = new JFrame("GUI Admin");
+        JFrame AdminWindow = new JFrame("GUI Admin");
 
         // add super cool icon
         ImageIcon kirbs	= new ImageIcon(getClass().getResource("/kirbs.jpg"));
-        adminWindow.setIconImage(kirbs.getImage());
+        AdminWindow.setIconImage(kirbs.getImage());
 
         //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
@@ -25,18 +25,18 @@ public class adminGUI {
 
         // set layout and resolution
 
-        adminWindow.setSize(800, 600);
+        AdminWindow.setSize(800, 600);
         /*
          *  Turns out when you close the admin window, the search window
          *  also closes. To stop this, we change EXIT_ON_CLOSE to
          *  DISPOSE_ON_CLOSE.
          */
-        adminWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        adminWindow.setLayout(null);
-        adminWindow.setVisible(true);
+        AdminWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        AdminWindow.setLayout(null);
+        AdminWindow.setVisible(true);
 
         // make content pane
-        con = adminWindow.getContentPane();
+        con = AdminWindow.getContentPane();
 
         // add title
         JLabel titleLabel = new JLabel("BitsPlease Search Engine");

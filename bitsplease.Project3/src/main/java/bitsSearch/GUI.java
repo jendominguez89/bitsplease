@@ -86,16 +86,16 @@ public class GUI {
         Font buttonFont = new Font("Times New Roman", Font.PLAIN, 20);
         // make window
         Container con;
-        javax.swing.JFrame adminWindow = new javax.swing.JFrame("BitsPlease Search Tool");
+        javax.swing.JFrame AdminWindow = new javax.swing.JFrame("BitsPlease Search Tool");
         ImageIcon link	= new ImageIcon(getClass().getResource("/link.jpg"));
-        adminWindow.setIconImage(link.getImage());
-        adminWindow.setSize(800,600);
-        adminWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        adminWindow.setLayout(null);
-        adminWindow.setVisible(true);
+        AdminWindow.setIconImage(link.getImage());
+        AdminWindow.setSize(800,600);
+        AdminWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        AdminWindow.setLayout(null);
+        AdminWindow.setVisible(true);
 
         // content pane
-        con = adminWindow.getContentPane();
+        con = AdminWindow.getContentPane();
 
         // title text
         JLabel titleLabel = new JLabel("BitsPlease Get Searching");
@@ -159,7 +159,7 @@ public class GUI {
              * be defined in its own block
              */
             public void actionPerformed(ActionEvent e) {
-                adminGUI admin = new adminGUI(); // creates admin window
+                AdminGUI admin = new AdminGUI(); // creates admin window
             }
             /*  Normally you wouldn't need a semicolon after a }
                 but this is still contained in a parenthesis, so
@@ -178,9 +178,9 @@ public class GUI {
             named the search window "adminWindow", that should probably
             be different.
          */
-        adminWindow.invalidate();
-        adminWindow.validate();
-        adminWindow.repaint();
+        AdminWindow.invalidate();
+        AdminWindow.validate();
+        AdminWindow.repaint();
         textBox.requestFocusInWindow();
     }
     /*
@@ -191,6 +191,6 @@ public class GUI {
 
     public static void main(String[] args) {
         GUI gui = new GUI();
-        // adminGUI admin = new adminGUI();
+        // AdminGUI admin = new AdminGUI();
     }
 }
