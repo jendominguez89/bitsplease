@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// refactor folder heirarchy
-// add test file
 
 public class GUI {
     /*
