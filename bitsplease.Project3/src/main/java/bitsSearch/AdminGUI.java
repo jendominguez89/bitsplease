@@ -1,23 +1,37 @@
+
+
 package bitsSearch;
+
+import bitsSearch.models.IndexFile;
+import bitsSearch.repositories.FileRepository;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AdminGUI {
-    private String doesNothing () {return "Nothing here to see";}
+    private List<IndexFile> files = new ArrayList<>();
+    private FileRepository fileRepository = new FileRepository();
+
     public AdminGUI() {
+        try {
+            files = fileRepository.load();
+            for(IndexFile f:files){
+                // file has been changed for every file that != exist
+                // print files do not exist
+                System.out.println("The file you are searching for was removed and does not exist.");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // create window
         Container con = new Container();
-        JFrame AdminWindow = new JFrame("GUI Admin");
-
-        // add super cool icon
-        ImageIcon kirbs	= new ImageIcon(getClass().getResource("/kirbs.jpg"));
-        AdminWindow.setIconImage(kirbs.getImage());
+        JFrame adminWindow = new JFrame("GUI Admin");
 
         //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
@@ -25,18 +39,18 @@ public class AdminGUI {
 
         // set layout and resolution
 
-        AdminWindow.setSize(800, 600);
+        adminWindow.setSize(800, 600);
         /*
          *  Turns out when you close the admin window, the search window
          *  also closes. To stop this, we change EXIT_ON_CLOSE to
          *  DISPOSE_ON_CLOSE.
          */
-        AdminWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        AdminWindow.setLayout(null);
-        AdminWindow.setVisible(true);
+        adminWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        adminWindow.setLayout(null);
+        adminWindow.setVisible(true);
 
         // make content pane
-        con = AdminWindow.getContentPane();
+        con = adminWindow.getContentPane();
 
         // add title
         JLabel titleLabel = new JLabel("BitsPlease Search Engine");
@@ -48,19 +62,19 @@ public class AdminGUI {
 
         // adding table
         JPanel tablePanel = new JPanel();
-        tablePanel.setBounds(180,150,400,200);
+        tablePanel.setBounds(180, 200, 400, 200);
         con.add(tablePanel);
-        JTable table = new JTable(6,3);
+        JTable table = new JTable(3, 3);
         table.getColumnModel().getColumn(0).setHeaderValue("File Name");
         table.getColumnModel().getColumn(1).setHeaderValue("File Status");
         table.getColumnModel().getColumn(2).setHeaderValue("File Date");
-        JScrollPane sp=new JScrollPane(table);
+        JScrollPane sp = new JScrollPane(table);
         tablePanel.add(sp);
         tablePanel.setVisible(true);
 
         // add buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(185, 350, 400, 50);
+        buttonPanel.setBounds(200, 400, 400, 50);
         con.add(buttonPanel);
         JButton addFile = new JButton("Add File");
         JButton updateFile = new JButton("Update");
@@ -77,40 +91,11 @@ public class AdminGUI {
         anchorPanel.add(anchorText);
         con.add(anchorPanel);
 
-        // select files for indexing
-        removeFile.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                doesNothing();
-            }
-        });
 
-        updateFile.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                doesNothing();
-            }
-        });
-
-        addFile.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {SelectFile();
-            }
-        });
     }
-        public static void SelectFile () {
-            SwingUtilities.invokeLater(() -> {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (Exception ignored) {
-                }
-                JFileChooser fileChooser = new JFileChooser(".");
-                int status = fileChooser.showOpenDialog(null);
-                if (status == JFileChooser.APPROVE_OPTION) {
-                    File selectedFile = fileChooser.getSelectedFile();
-                    System.out.println("Selected: " + selectedFile.getParent()
-                            + " --- " + selectedFile.getName());
-                }
-                System.exit(0);
-            });
 
 
-        }
+    public static void main(String[] args) {
+        AdminGUI admin = new AdminGUI();
+    }
 }
