@@ -143,7 +143,7 @@ public class GUI {
             }
         });
 
-        
+
 
         JButton adminButton = new JButton("Settings");
         adminButton.addActionListener(new ActionListener() {
