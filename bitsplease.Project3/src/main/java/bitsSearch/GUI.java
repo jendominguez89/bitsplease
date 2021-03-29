@@ -40,7 +40,7 @@ public class GUI {
         /* or button */
         JRadioButton orButton = new JRadioButton("Or");
         orButton.setActionCommand("OR");
-        /* exact match button, refered to as 'match' */
+        /* exact match button, referred to as 'match' */
         JRadioButton matchButton = new JRadioButton("Exact Match");
         matchButton.setActionCommand("MATCH");
 
@@ -51,7 +51,7 @@ public class GUI {
         group.add(matchButton);
 
         /*  Action listeners, the string can be used as the control value
-            for a switch case in the parsing function. This is a good canidate
+            for a switch case in the parsing function. This is a good candidate
             for a do over. Using isSelected() might be easier to understand
             and it'll probably be less to read.
          */
@@ -75,7 +75,6 @@ public class GUI {
         jpanel.add(matchButton);
     }
 
-
     /*
      *   The fact that this function has no return declared, and
      *  it has the same name as the class, makes this a constructor.
@@ -90,12 +89,13 @@ public class GUI {
         Font buttonFont = new Font("Times New Roman", Font.PLAIN, 20);
         // make window
         Container con;
-        javax.swing.JFrame searchWindow = new javax.swing.JFrame();
+        javax.swing.JFrame searchWindow = new javax.swing.JFrame("BitsPlease Search Tool");
+        ImageIcon link	= new ImageIcon(getClass().getResource("/link.jpg"));
+        searchWindow.setIconImage(link.getImage());
         searchWindow.setSize(800,600);
         searchWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         searchWindow.setLayout(null);
         searchWindow.setVisible(true);
-        searchWindow.setResizable(false);
 
         // content pane
         con = searchWindow.getContentPane();
@@ -120,7 +120,7 @@ public class GUI {
            }
         });
 
-        JLabel textLabel = new JLabel("Enter Search Term Here:");
+        JLabel textLabel = new JLabel("Enter Search Term Here:  ");
         textPanel.add(textLabel,BorderLayout.WEST);
         con.add(textPanel);
 
@@ -144,20 +144,7 @@ public class GUI {
                 placeholder = stubMethod();
             }
         });
-
-        /*
-        JButton updateSearchInfo = new JButton("Update");
-        updateSearchInfo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                placeholder = stubMethod();
-            }
-        });
-        JButton removeSearchInfo = new JButton("Delete");
-        removeSearchInfo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                placeholder = stubMethod();
-            }
-        });
+     });
 
         */
 
@@ -167,7 +154,7 @@ public class GUI {
              * be defined in its own block
              */
             public void actionPerformed(ActionEvent e) {
-                adminGUI admin = new adminGUI(); // creates admin window
+                AdminGUI admin = new AdminGUI(); // creates admin window
             }
             /*  Normally you wouldn't need a semicolon after a }
                 but this is still contained in a parenthesis, so
@@ -176,19 +163,11 @@ public class GUI {
              */
         });
         buttonPanel.add(addSearchInfo);
-
-       /*
-       buttonPanel.add(updateSearchInfo);
-       buttonPanel.add(removeSearchInfo);
-       */
-
         buttonPanel.add(adminButton);
 
         /*  Adding elements is turning the window blank. This should
             stop it for the moment but the error means we should change the
-            way we instantiate the window. Also just noticed that we
-            named the search window "adminWindow", that should probably
-            be different.
+            way we instantiate the window.
          */
         searchWindow.invalidate();
         searchWindow.validate();
@@ -203,6 +182,5 @@ public class GUI {
 
     public static void main(String[] args) {
         GUI gui = new GUI();
-        // adminGUI admin = new adminGUI();
     }
 }
