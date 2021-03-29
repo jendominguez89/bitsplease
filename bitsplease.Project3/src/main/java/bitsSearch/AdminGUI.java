@@ -7,7 +7,11 @@ import bitsSearch.repositories.FileRepository;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
+import java.sql.Date;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +19,7 @@ import java.util.List;
 public class AdminGUI {
     private List<IndexFile> files = new ArrayList<>();
     private FileRepository fileRepository = new FileRepository();
+    private void doesNothing (){}
 
     public AdminGUI() {
         try {
@@ -92,8 +97,26 @@ public class AdminGUI {
         con.add(anchorPanel);
 
 
+        // select files for indexing
+        removeFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                doesNothing();
+            }
+        });
+
+        updateFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                doesNothing();
+            }
+        });
+
+        addFile.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {SelectFile();
+            }
+        });
     }
-    public static void SelectFile () {
+
+    public void SelectFile () {
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -105,6 +128,17 @@ public class AdminGUI {
                 File selectedFile = fileChooser.getSelectedFile();
                 System.out.println("Selected: " + selectedFile.getParent()
                         + " --- " + selectedFile.getName());
+                try {
+                    IndexFile f = new IndexFile();
+                    f.setIndexTime(Date.from(Instant.now()));
+                    f.setFileName(selectedFile.getCanonicalPath());
+                    this.files.add(f);
+                    this.fileRepository.save(this.files);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
             }
             System.exit(0);
         });
