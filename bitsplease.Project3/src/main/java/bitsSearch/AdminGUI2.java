@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AdminGUI {
+public class AdminGUI2 {
     private List<IndexFile> files = new ArrayList<>();
     private FileRepository fileRepository = new FileRepository();
     private void doesNothing (){}
 
-    public AdminGUI() {
+    public AdminGUI2() {
         try {
             files = fileRepository.load();
             for(IndexFile f:files){
@@ -147,6 +147,6 @@ public class AdminGUI {
 
 
     public static void main(String[] args) {
-        AdminGUI admin = new AdminGUI();
+        AdminGUI2 admin = new AdminGUI2();
     }
 }
