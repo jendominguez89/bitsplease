@@ -73,6 +73,7 @@ public class GUI {
         jpanel.add(matchButton);
     }
 
+
     /*
      *   The fact that this function has no return declared, and
      *  it has the same name as the class, makes this a constructor.
@@ -94,6 +95,7 @@ public class GUI {
         searchWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         searchWindow.setLayout(null);
         searchWindow.setVisible(true);
+        searchWindow.setResizable(false);
 
         // content pane
         con = searchWindow.getContentPane();
