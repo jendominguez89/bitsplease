@@ -93,6 +93,23 @@ public class AdminGUI {
 
 
     }
+    public static void SelectFile () {
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception ignored) {
+            }
+            JFileChooser fileChooser = new JFileChooser(".");
+            int status = fileChooser.showOpenDialog(null);
+            if (status == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                System.out.println("Selected: " + selectedFile.getParent()
+                        + " --- " + selectedFile.getName());
+            }
+            System.exit(0);
+        });
+        
+    }
 
 
     public static void main(String[] args) {
