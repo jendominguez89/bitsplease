@@ -1,7 +1,7 @@
 package bitsSearch.models;
 
 import java.util.Date;
-import java.sql.File;
+import java.io.File;
 public class IndexFile {
     private String fileName;
     private Date indexTime;

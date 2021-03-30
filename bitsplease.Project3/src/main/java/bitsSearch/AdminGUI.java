@@ -31,7 +31,7 @@ public class AdminGUI {
                  * to check if the file has been modified since the index file
                  * was written
                  */
-                if (f.exists == false) {
+                if (f.getExists() == false) {
                     System.out.println("The file you are searching for was removed and does not exist.");
                 }
                 else if (f.hasBeenModified()) {
