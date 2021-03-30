@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class GUI {
     /*
         placeholder values for testing, these will be
@@ -53,9 +54,9 @@ public class GUI {
             and it'll probably be less to read.
          */
         andButton.addActionListener(new ActionListener() {
-            public void actionPerformed( ActionEvent e ) {
-                radioHook(andButton.getActionCommand());
-            }
+           public void actionPerformed( ActionEvent e ) {
+               radioHook(andButton.getActionCommand());
+           }
         });
         orButton.addActionListener(new ActionListener() {
             public void actionPerformed( ActionEvent e ) {
@@ -71,6 +72,7 @@ public class GUI {
         jpanel.add(orButton);
         jpanel.add(matchButton);
     }
+
 
     /*
      *   The fact that this function has no return declared, and
@@ -93,6 +95,7 @@ public class GUI {
         searchWindow.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         searchWindow.setLayout(null);
         searchWindow.setVisible(true);
+        searchWindow.setResizable(false);
 
         // content pane
         con = searchWindow.getContentPane();
@@ -112,9 +115,9 @@ public class GUI {
         JTextField textBox = new JTextField(25); // arg != hard limit
         textPanel.add(textBox,BorderLayout.CENTER);
         textBox.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                placeholder = textBox.getText();
-            }
+           public void actionPerformed(ActionEvent e) {
+               placeholder = textBox.getText();
+           }
         });
 
         JLabel textLabel = new JLabel("Enter Search Term Here:  ");
@@ -128,7 +131,7 @@ public class GUI {
         addRadioButtons(radioPanel);
         con.add(radioPanel);
 
-        // regular panel
+        // fabulous panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.setFont(buttonFont);
         buttonPanel.setBounds(200,450,400,50);
@@ -142,13 +145,15 @@ public class GUI {
             }
         });
 
+
+
         JButton adminButton = new JButton("Settings");
         adminButton.addActionListener(new ActionListener() {
             /* actionPerformed must be present, although it can
              * be defined in its own block
              */
             public void actionPerformed(ActionEvent e) {
-                adminGUI admin = new adminGUI(); // creates admin window
+                AdminGUI admin = new AdminGUI(); // creates admin window
             }
             /*  Normally you wouldn't need a semicolon after a }
                 but this is still contained in a parenthesis, so
@@ -162,7 +167,6 @@ public class GUI {
         /*  Adding elements is turning the window blank. This should
             stop it for the moment but the error means we should change the
             way we instantiate the window.
-
          */
         searchWindow.invalidate();
         searchWindow.validate();
