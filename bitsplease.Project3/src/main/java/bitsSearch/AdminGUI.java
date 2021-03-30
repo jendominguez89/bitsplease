@@ -25,9 +25,18 @@ public class AdminGUI {
         try {
             files = fileRepository.load();
             for(IndexFile f:files){
-                // file has been changed for every file that != exist
-                // print files do not exist
-                System.out.println("The file you are searching for was removed and does not exist.");
+                /*
+                 * for each file in the index, check IndexFile.exists value
+                 * to make sure its there, then use IndexFile.hasBeenModified()
+                 * to check if the file has been modified since the index file
+                 * was written
+                 */
+                if (f.exists == false) {
+                    System.out.println("The file you are searching for was removed and does not exist.");
+                }
+                else if (f.hasBeenModified()) {
+                    System.out.println("This file has been modified since last indexed.");
+                }
             }
 
         } catch (IOException e) {
