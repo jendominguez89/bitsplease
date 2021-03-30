@@ -30,4 +30,9 @@ public class IndexFile {
     public void setExists(Boolean exists) {
         this.exists = exists;
     }
+
+    public boolean hasBeenModified() {
+        int answer = indexTime.compareTo(new Date(new File(filename).lastModified)));
+        return answer < 0;
+    }
 }
