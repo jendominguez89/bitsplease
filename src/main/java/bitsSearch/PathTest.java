@@ -1,3 +1,5 @@
+package bitsSearch;
+
 import java.io.*;
 
 public class PathTest {

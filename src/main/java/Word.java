@@ -8,9 +8,9 @@
 
 
 public class Word {
-    public final String word; // the word itself, should probs be immutable
-    public ArrayList<Files> files; // list of files in which the word is found
-    public ArrayList<int> places; // word count number of each occurence
+    public String word; // the word itself, should probs be immutable
+    public ArrayList<File> files; // list of files in which the word is found
+    public ArrayList<Integer> places; // word count number of each occurence
 
 
     /*
