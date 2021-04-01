@@ -13,4 +13,12 @@ public class GUITest {
     public void testRun() {
         assertTrue( true );
     }
+    @Test
+    public void guiTest() {
+        GUI testGui = new GUI();
+    }
+    @Test
+    public void adminTest() {
+        AdminGUI testAdmin = new AdminGUI();
+    }
 }

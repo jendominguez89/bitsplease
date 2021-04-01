@@ -1,7 +1,7 @@
 package bitsSearch.models;
 
 import java.util.Date;
-
+import java.io.File;
 public class IndexFile {
     private String fileName;
     private Date indexTime;
@@ -29,5 +29,10 @@ public class IndexFile {
 
     public void setExists(Boolean exists) {
         this.exists = exists;
+    }
+
+    public boolean hasBeenModified() {
+        int answer = indexTime.compareTo(new Date(new File(fileName).lastModified()));
+        return answer < 0;
     }
 }
