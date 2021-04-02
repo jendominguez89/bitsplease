@@ -41,9 +41,12 @@ public class AdminGUI {
         Container con = new Container();
         JFrame adminWindow = new JFrame("GUI Admin");
 
+
         //set fonts
         Font titleFont = new Font("Times New Roman", Font.BOLD, 40);
         Font anchorFont = new Font("Times New Roman", Font.PLAIN, 16);
+        ImageIcon kirbs	= new ImageIcon(getClass().getResource("/kirbs.jpg"));
+        adminWindow.setIconImage(kirbs.getImage());
 
         // set layout and resolution
 
