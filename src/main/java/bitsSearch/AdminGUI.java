@@ -18,14 +18,14 @@ import java.util.List;
 
 public class AdminGUI {
     private List<IndexFile> files = new ArrayList<>();
-    private FileRepository fileRepository = new FileRepository();
+    private final FileRepository fileRepository = new FileRepository();
     private void doesNothing (){}
 
     public AdminGUI() {
         try {
             files = fileRepository.load();
             for(IndexFile f:files){
-                if(f.getExists() == false) {
+                if(!f.getExists()) {
                     System.out.println("The file you are searching for was removed and does not exist.");
                 }
                 else if (f.hasBeenModified()) {
@@ -108,6 +108,37 @@ public class AdminGUI {
                 doesNothing();
             }
         });
+
+        /*remove files from index
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception ignored) {
+                }
+                JFileChooser fileChooser = new JFileChooser(".");
+                int status = fileChooser.showOpenDialog(null);
+                if (status == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    System.out.println("Selected: " + selectedFile.getParent()
+                            + " --- " + selectedFile.getName());
+                    try {
+                        IndexFile f = new IndexFile();
+                        f.setIndexTime(Date.from(Instant.now()));
+                        f.setFileName(selectedFile.getCanonicalPath());
+                        this.files.remove(f);
+                        this.fileRepository.remove(this.files);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+                System.exit(0);
+            });
+            
+         */
+
+
 
         updateFile.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

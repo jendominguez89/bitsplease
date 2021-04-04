@@ -46,4 +46,7 @@ public class FileRepository {
         }
         return files;
     }
+
+    public void remove(List<IndexFile> files) {
+    }
 }
